@@ -50,6 +50,20 @@ a {
   left: 10%;
 }
 
+.section-about{
+  margin-left: 10%;
+}
+
+.section-about h2 {
+  position: absolute;
+  font-size: 200%;
+}
+
+.section-about p {
+  position: absolute;
+  margin-top: 6%;
+}
+
 .section-content h2 {
   font-size: 300%;
 }
