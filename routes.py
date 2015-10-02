@@ -12,10 +12,10 @@ def index():
 
 @app.route("/about")
 def about():
-    #host = socket.gethostbyname(socket.gethostname())
-    #name = socket.gethostname()
-    #flash(host)
-    #flash(name)
+    host = socket.gethostbyname(socket.gethostname())
+    name = socket.gethostname()
+    flash(host)
+    flash(name)
     return render_template('about.html')
 
 if __name__ == '__main__':
