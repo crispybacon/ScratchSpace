@@ -185,9 +185,18 @@ header {
   position: relative;
   top: 53px;
 }
+.signup-title {
+  margin-top: 5%;
+  margin-left: 10%;
+  font-size: 185%;
+}
 
 .form-group {
   margin-bottom: 20px;
+  margin-left: 10%;
+}
+.form-group h2 {
+  margin-left: 10%;
 }
 
 .form-group label {
@@ -206,7 +215,7 @@ header {
   color: #3a3a3a;
   font-size: 18px;
   padding: 5px 0;
-  width: 100%;
+  width: 30%;
 }
 
 .form-group input:focus {
@@ -226,7 +235,9 @@ header {
   color: #db4437;
 }
 
-
+.signup-button {
+  margin-left: 10%;
+}
 /*
  * Sign up
  */
