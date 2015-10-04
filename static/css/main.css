@@ -50,6 +50,17 @@ a {
   left: 10%;
 }
 
+.section-signin-content {
+  color: #3a3a3a;
+  float: left;
+  width: 340px;
+  position: absolute;
+  top: 18%;
+  left: 10%;
+  font-weight: 200;
+  font-size: 115%;
+}
+
 .section-about{
   margin-left: 10%;
 }
@@ -78,6 +89,9 @@ a {
   position: relative;
   top: 80px;
   right: 20%;
+}
+.home-title {
+  margin-left: 10%;
 }
 
 .btn-primary {
@@ -191,6 +205,10 @@ header {
   font-size: 185%;
 }
 
+.login-title {
+  margin-top: 5%;
+  font-size: 185%;
+}
 .form-group {
   margin-bottom: 20px;
   margin-left: 10%;
@@ -229,6 +247,27 @@ header {
 
 .form-group .error-message + input {
   border-bottom: 2px solid #db4437;
+}
+
+.login-form-group {}
+
+.login-form-group label {
+    color: #3a3a3a;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.login-form-group input {
+    border: none;
+    border-bottom: 2px solid #4285f4;
+    background-color: transparent;
+    color: #3a3a3a;
+    font-size: 18px;
+    padding: 5px 0;
+    width: 120%;
 }
 
 .error-message {

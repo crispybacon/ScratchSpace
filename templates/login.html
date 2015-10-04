@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <main class="container">
+    <div class="section-signin-content">
+      <h2 class="login-title">Log in</h2>
+
+      <form method="POST" action="/login">
+        {{ form.hidden_tag() }}
+
+        <div class="login-form-group">
+          {{ form.email.label }}
+          {{ form.email }}
+        </div>
+
+        <div class="login-form-group">
+          {{ form.password.label }}
+          {{ form.password }}
+        </div>
+      </br>
+
+        {{ form.submit(class="btn-primary ") }}
+
+      </form>
+    </div>
+  </main>
+{% endblock %}
