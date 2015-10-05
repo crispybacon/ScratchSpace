@@ -13,3 +13,12 @@ itsdangerous
 geocoder
 psycopg2
 ipython
+numpy
+scipy
+astropy
+matplotlib
+pygal
+nltk
+bokeh
+twisted
+nginx
