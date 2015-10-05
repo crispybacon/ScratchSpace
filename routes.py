@@ -84,6 +84,7 @@ def home():
             p = Place()
             my_coordinates = p.address_to_latlng(address)
             places = p.query(address)
+            #import pdb; pdb.set_trace()
 
             #return the results
             return render_template('home.html', form=form, my_coordinates=my_coordinates, places=places)

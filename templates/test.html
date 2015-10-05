@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel='stylesheet'>
+    <link href="../main.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/leaflet.css">
+  </head>
+  <body>
+    <script>
+       var planes = [
+
+           ["<h3><a href='http://en.wikipedia.org/Los_Angeles_Theatre_Center' target='_blank'>Los Angeles Theatre Center</a></h3> <p>0 min away</p>", 34.0522222222, -118.243611111 ],
+
+           ["<h3><a href='http://en.wikipedia.org/Siege_of_Los_Angeles' target='_blank'>Siege of Los Angeles</a></h3> <p>0 min away</p>", 34.0522, -118.244 ],
+
+           ["<h3><a href='http://en.wikipedia.org/Los_Angeles_Police_Department' target='_blank'>Los Angeles Police Department</a></h3> <p>1 min away</p>", 34.051941, -118.244514 ],
+
+           ["<h3><a href='http://en.wikipedia.org/Caltrans_District_7_Headquarters' target='_blank'>Caltrans District 7 Headquarters</a></h3> <p>1 min away</p>", 34.0514, -118.2439 ],
+
+           ["<h3><a href='http://en.wikipedia.org/Los_Angeles_Times_Building' target='_blank'>Los Angeles Times Building</a></h3> <p>1 min away</p>", 34.053009, -118.244596 ],
+
+           ["<h3><a href='http://en.wikipedia.org/Los_Angeles_City_Hall' target='_blank'>Los Angeles City Hall</a></h3> <p>2 min away</p>", 34.0536, -118.243 ],
+
+           ["<h3><a href='http://en.wikipedia.org/Cleveland_City_Hall' target='_blank'>Cleveland City Hall</a></h3> <p>2 min away</p>", 34.0536, -118.243 ],
+
+           ["<h3><a href='http://en.wikipedia.org/Higgins_Building' target='_blank'>Higgins Building</a></h3> <p>2 min away</p>", 34.0511, -118.2449 ],
+
+           ["<h3><a href='http://en.wikipedia.org/Cathedral_of_Saint_Vibiana' target='_blank'>Cathedral of Saint Vibiana</a></h3> <p>2 min away</p>", 34.0505, -118.2444 ],
+
+           ["<h3><a href='http://en.wikipedia.org/Historic_Core,_Los_Angeles' target='_blank'>Historic Core, Los Angeles</a></h3> <p>2 min away</p>", 34.05349, -118.245319 ],
+
+       ];
+
+       var map = L.map('map').setView([34.0522342, -118.2436849], 15);
+       mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+       L.tileLayer(
+         'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+           attribution: '&copy; ' + mapLink + ' Contributors',
+           maxZoom: 18,
+         }
+       ).addTo(map);
+
+       for (var i = 0; i < planes.length; i++) {
+         marker = new L.marker([planes[i][1],planes[i][2]])
+           .bindPopup(planes[i][0])
+           .addTo(map);
+       }
+     </script>
+  </body>
+   <footer>
+     <script href="../js/leaflet.js')"></script>
+   </footer>
+</html>
