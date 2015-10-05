@@ -1,8 +1,9 @@
 from flask import Flask, render_template, url_for, redirect, flash, request, session
-from models import db, User
-from forms import SignupForm, LoginForm
+from models import db, User, Place
+from forms import SignupForm, LoginForm, AddressForm
 from flask.ext.sqlalchemy import SQLAlchemy
 import socket
+import requests as fetch
 
 app = Flask(__name__)
 
@@ -65,11 +66,36 @@ def logout():
     session.pop('email', None)
     return redirect(url_for('index'))
 
-@app.route("/home")
+@app.route("/home", methods = ['GET', 'POST'])
 def home():
     if 'email' not in session:
         return redirect(url_for('login'))
-    return render_template("home.html")
+    form = AddressForm()
+    places = []
+    my_coordinates = (38.70734059999999, -76.5310669)
+
+    if request.method == 'POST':
+        if form.validate() == False:
+            return render_template('home.html', form=form)
+        else:
+            #Get the address
+            address = form.address.data
+            #Process the address
+            p = Place()
+            my_coordinates = p.address_to_latlng(address)
+            places = p.query(address)
+
+            #return the results
+            return render_template('home.html', form=form, my_coordinates=my_coordinates, places=places)
+    elif request.method == 'GET':
+        return render_template("home.html", form=form, my_coordinates=my_coordinates, places=places)
+'''
+@app.route("/jesse/<int:port>")
+def jesse(port):
+    fqdn = socket.getfqdn()
+    hostname = socket.gethostname()
+    return redirect('http://' + hostname + ':' + str(port))
+'''
 
 if __name__ == '__main__':
     app.run(debug=True)
