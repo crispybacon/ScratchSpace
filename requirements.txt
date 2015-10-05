@@ -10,3 +10,6 @@ MarkupSafe
 Werkzeug
 gunicorn
 itsdangerous
+geocoder
+psycopg2
+ipython
