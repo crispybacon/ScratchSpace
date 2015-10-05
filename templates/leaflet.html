@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet Quick Start Guide Example</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="static/css/mapbox.css" />
+</head>
+<body>
+	<div id="map" style="width: 600px; height: 400px"></div>
+
+	<script src="static/js/leaflet.js"></script>
+	<script>
+  var planes = [
+    {% for place in places %}
+      ["<h3><a href='{{ place['url'] }}' target='_blank'>{{ place['name'] }}</a></h3> <p>{{ place['time'] }} min away</p>", {{ place['lat'] }}, {{ place['lng'] }} ],
+    {% endfor %}
+  ];
+
+  var map = L.map('map').setView([{{ my_coordinates[0] }}, {{ my_coordinates[1] }}], 15);
+  mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+  L.tileLayer(
+    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; ' + mapLink + ' Contributors',
+      maxZoom: 18,
+    }
+  ).addTo(map);
+
+  for (var i = 0; i < planes.length; i++) {
+    marker = new L.marker([planes[i][1],planes[i][2]])
+      .bindPopup(planes[i][0])
+      .addTo(map);
+  }
+
+  </script>
+
+  </body>
+</html>

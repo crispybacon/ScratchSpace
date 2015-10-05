@@ -357,6 +357,7 @@ header {
 
 .section-tabs article {
   margin-bottom: 20px;
+
 }
 
 .section-tabs article .name {
@@ -395,6 +396,8 @@ header {
 
 #map {
   height: 500px;
+  width:  500px;
+  margin-top: 15%;
 }
 
 .leaflet-popup-content h3 {

@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, redirect, flash, request, ses
 from models import db, User, Place
 from forms import SignupForm, LoginForm, AddressForm
 from flask.ext.sqlalchemy import SQLAlchemy
-import socket
+import socket, re
 import requests as fetch
 
 app = Flask(__name__)
@@ -84,9 +84,8 @@ def home():
             p = Place()
             my_coordinates = p.address_to_latlng(address)
             places = p.query(address)
-            #import pdb; pdb.set_trace()
-
-            #return the results
+            for place in places:
+                place['url'] = re.sub('http://en.wikipedia.org/', 'http://en.wikipedia.org/wiki/', place['url'])
             return render_template('home.html', form=form, my_coordinates=my_coordinates, places=places)
     elif request.method == 'GET':
         return render_template("home.html", form=form, my_coordinates=my_coordinates, places=places)
@@ -97,6 +96,19 @@ def jesse(port):
     hostname = socket.gethostname()
     return redirect('http://' + hostname + ':' + str(port))
 '''
+
+@app.route("/leaflet1", methods = ['GET', 'POST'])
+def leaflet1():
+    my_coordinates = (38.70734059999999, -76.5310669)
+    address = '3630 n glouster drive north beach MD'
+    p = Place()
+    my_coordinates = p.address_to_latlng(address)
+    places = p.query(address)
+    return render_template("leaflet.html", my_coordinates=my_coordinates, places=places)
+
+@app.route("/leaflet_quickstart", methods = ['GET', 'POST'])
+def leaflet2():
+    return render_template("leaflet_quickstart.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
