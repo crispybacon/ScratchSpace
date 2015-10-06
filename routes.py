@@ -100,7 +100,7 @@ def jesse(port):
 @app.route("/leaflet1", methods = ['GET', 'POST'])
 def leaflet1():
     my_coordinates = (38.8976763, -77.0365298)
-    address = '3630 n glouster drive north beach MD'
+    address = 'Whote House'
     p = Place()
     my_coordinates = p.address_to_latlng(address)
     places = p.query(address)
