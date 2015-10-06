@@ -1,7 +1,7 @@
 from flask.ext.sqlalchemy import SQLAlchemy
 from werkzeug import generate_password_hash, check_password_hash
 from flask import Flask
-import os
+import os, socket
 
 import geocoder
 import urllib2
@@ -10,7 +10,7 @@ import json
 #db = SQLAlchemy()
 app = Flask(__name__)
 app.secret_key = '12ff9a90818fe6ebe152a67cf052dfd6f09485ed07fa32aec9349cdcc6157642'
-if os.environ['_system_name'] == 'OSX':
+if socket.gethostname() == 'Apollo':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
