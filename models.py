@@ -11,7 +11,7 @@ import json
 app = Flask(__name__)
 app.secret_key = '12ff9a90818fe6ebe152a67cf052dfd6f09485ed07fa32aec9349cdcc6157642'
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['HEROKU_POSTGRESQL_GOLD_URL']
 db = SQLAlchemy(app)
 
 
