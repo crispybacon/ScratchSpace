@@ -10,8 +10,10 @@ import json
 #db = SQLAlchemy()
 app = Flask(__name__)
 app.secret_key = '12ff9a90818fe6ebe152a67cf052dfd6f09485ed07fa32aec9349cdcc6157642'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+if os.environ['_system_name'] == 'OSX':
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 

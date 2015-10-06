@@ -72,7 +72,7 @@ def home():
         return redirect(url_for('login'))
     form = AddressForm()
     places = []
-    my_coordinates = (38.70734059999999, -76.5310669)
+    my_coordinates = (38.8976763, -77.0365298)
 
     if request.method == 'POST':
         if form.validate() == False:
@@ -99,7 +99,7 @@ def jesse(port):
 
 @app.route("/leaflet1", methods = ['GET', 'POST'])
 def leaflet1():
-    my_coordinates = (38.70734059999999, -76.5310669)
+    my_coordinates = (38.8976763, -77.0365298)
     address = '3630 n glouster drive north beach MD'
     p = Place()
     my_coordinates = p.address_to_latlng(address)
