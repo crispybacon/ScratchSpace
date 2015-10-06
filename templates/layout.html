@@ -10,6 +10,15 @@
     <header class="container">
       <div>
         <h1 class="title">Learning Flask</h1>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        {% endwith %}
       </div>
     </header>
 

@@ -31,14 +31,17 @@ def signup():
     form = SignupForm()
     if request.method == 'POST':
         if form.validate() == False:
+            flash_errors(form)
             return render_template('signup.html', form=form)
         else:
             newuser = User(form.firstname.data, form.lastname.data, form.email.data, form.password.data)
             db.session.add(newuser)
             db.session.commit()
             session['email'] = newuser.email
+            flash_errors(form)
             return redirect(url_for('home'))
     elif request.method == 'GET':
+        flash_errors(form)
         return render_template('signup.html', form=form)
 
 @app.route("/login", methods=["GET", "POST"])
@@ -46,8 +49,10 @@ def login():
     if 'email' in session:
         return redirect(url_for('home'))
     form = LoginForm()
+    flash_errors(form)
     if request.method == "POST":
         if form.validate == False:
+            flash_errors(form)
             return render_template("login.html", form=form)
         else:
             email = form.email.data
@@ -55,8 +60,10 @@ def login():
             user = User.query.filter_by(email=email).first()
             if user is not None and user.check_password(password):
                 session['email'] = form.email.data
+                flash_errors(form)
                 return redirect(url_for('home'))
             else:
+                flash_errors(form)
                 return redirect(url_for('about'))
     elif request.method == 'GET':
         return render_template('login.html', form=form)
@@ -73,9 +80,9 @@ def home():
     form = AddressForm()
     places = []
     my_coordinates = (38.8976763, -77.0365298)
-
     if request.method == 'POST':
         if form.validate() == False:
+            flash_errors(form)
             return render_template('home.html', form=form)
         else:
             #Get the address
@@ -86,8 +93,10 @@ def home():
             places = p.query(address)
             for place in places:
                 place['url'] = re.sub('http://en.wikipedia.org/', 'http://en.wikipedia.org/wiki/', place['url'])
+            flash_errors(form)
             return render_template('home.html', form=form, my_coordinates=my_coordinates, places=places)
     elif request.method == 'GET':
+        flash_errors(form)
         return render_template("home.html", form=form, my_coordinates=my_coordinates, places=places)
 '''
 @app.route("/jesse/<int:port>")
@@ -109,6 +118,14 @@ def leaflet1():
 @app.route("/leaflet_quickstart", methods = ['GET', 'POST'])
 def leaflet2():
     return render_template("leaflet_quickstart.html")
+
+def flash_errors(form):
+    for field, errors in form.errors.items():
+        for error in errors:
+            flash(u"Error in the %s field - %s" % (
+                getattr(form, field).label.text,
+                error
+            ))
 
 if __name__ == '__main__':
     app.run(debug=True)
