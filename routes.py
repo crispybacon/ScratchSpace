@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, redirect, flash, request, ses
 from models import db, User, Place
 from forms import SignupForm, LoginForm, AddressForm
 from flask.ext.sqlalchemy import SQLAlchemy
-import socket, re, logging
+import socket, re, logging, sys
 import requests as fetch
 
 app = Flask(__name__)
