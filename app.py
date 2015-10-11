@@ -7,6 +7,9 @@ app = Flask(__name__)
 app.secret_key = 'FYIR'
 
 @app.route("/")
+def landing():
+    return render_template('landing.html')
+
 @app.route("/news")
 def news():
     return render_template('news.html')
