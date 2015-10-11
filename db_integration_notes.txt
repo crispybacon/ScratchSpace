@@ -1,0 +1,8 @@
+# heroku addons:create heroku-postgresql:hobby-dev --app sleepy-sea-7309
+# heroku addons:add heroku-postgresql:hobby-dev
+HEROKU_POSTGRESQL_GOLD_URL sleepy-sea-7309
+# heroku pg:promote HEROKU_POSTGRESQL_GOLD_URL
+Promoting postgresql-elliptical-4489  to DATABASE_URL on sleepy-sea-7309... done
+
+>>> from models import db
+>>> db.create_all()

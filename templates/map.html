@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<form class=address_form>
+  Address:<br>
+  <input type="text" name="address">
+	<input type="submit" value="Submit">
+</form>
+<div id="map"></map>
+<div class="mapbox">
+	<script src="static/js/leaflet.js"></script>
+	<script>
+	var planes = [
+		{% for place in places %}
+			["<h3><a href='{{ place['url'] }}' target='_blank'>{{ place['name'] }}</a></h3> <p>{{ place['time'] }}</p>", {{ place['lat'] }}, {{ place['lng'] }} ],
+		{% endfor %}
+	];
+
+	var map = L.map('map').setView([{{ my_coordinates[0] }}, {{ my_coordinates[1] }}], 15);
+	mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+	L.tileLayer(
+		'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; ' + mapLink + ' Contributors',
+			maxZoom: 18,
+		}
+	).addTo(map);
+
+	for (var i = 0; i < planes.length; i++) {
+		marker = new L.marker([planes[i][1],planes[i][2]])
+			.bindPopup(planes[i][0])
+			.addTo(map);
+	}
+
+	</script>
+</div>
+{% endblock %}
+{% block footer %}
+<footer>
+	<div class="section-tabs">
+		<div class = "places">
+			{% for place in places %}
+				<article>
+					<a class="name" href="{{ place['url'] }}" target="_blank">{{ place['name'] }}</a>
+				</article>
+			{% endfor %}
+		</div>
+	</div>
+  <div class="bottom-section">
+    <ul class="nav-list bottom-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="news">News</a></li>
+      <li><a href="weather">Weather</a></li>
+      <li><a href="map">Maps</a></li>
+      <li><a href="login">Log In</a></li>
+      <li><a href="signup">Sign Up</a></li>
+    </ul>
+  </div>
+</footer>
+{% endblock %}
