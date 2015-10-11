@@ -9,7 +9,7 @@ ol {margin-bottom:3%;}
 .Business {color:crimson;font-size:33.3%;text-align:center;}
 .sources, .FYIR, .associations {text-align:center; margin-top: 3%; font-size:200%; color:gold; text-shadow: 2px 2px #ff0000;}
 .title {margin-left:3%;}
-.title-text {color:white;font-weight:bold;text-shadow: 1px 1px blue;text-align: center; font-weight: bold;}
+.title-text {color:gold;font-weight:bold; text-shadow: 2px 2px #ff0000;text-align: center; font-weight: bold;}
 #Author {text-align:center;text-shadow: 1px 1px #ffed00;}
 
 #map {
@@ -51,12 +51,24 @@ ol {margin-bottom:3%;}
   display: inline;
 }
 
+.bottom-nav li:hover,
+.bottom-nav li a:hover {
+  font-size: 125%;
+  font-weight: bold;
+  text-shadow: 6px 6px #ff0000;
+  color: gold;
+}
+
 .bottom-nav li a {
   text-decoration: none;
   color: gold;
   text-shadow: 1px 1px red;
 }
-
+.bottom-section {
+  position: relative;
+  padding-bottom: 3%;
+  padding-top: 5%;
+}
 .bottom-section a {
   text-decoration: none;
 }

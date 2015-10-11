@@ -25,6 +25,10 @@ def map():
     print(places)
     return render_template("map.html", my_coordinates=my_coordinates, places=places)
 
+@app.route("/notes")
+def notes():
+    return render_template('notes.html')
+
 @app.route("/leaflet_quickstart")
 def lq():
     return render_template('leaflet_quickstart.html')
