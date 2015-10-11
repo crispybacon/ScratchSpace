@@ -6,10 +6,6 @@ import geocoder, urllib2, json
 app = Flask(__name__)
 app.secret_key = 'FYIR'
 
-@app.route("/index")
-def index():
-    return render_template('index.html')
-
 @app.route("/")
 @app.route("/news")
 def news():
@@ -28,10 +24,6 @@ def map():
     places = query(loc)
     print(places)
     return render_template("map.html", my_coordinates=my_coordinates, places=places)
-
-@app.route("/")
-def base():
-    return render_template('base.html')
 
 @app.route("/leaflet_quickstart")
 def lq():
