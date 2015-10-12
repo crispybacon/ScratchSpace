@@ -32,9 +32,23 @@ def map():
 def notes():
     return render_template('notes.html')
 
-@app.route("/leaflet_quickstart")
-def lq():
-    return render_template('leaflet_quickstart.html')
+#@app.route("/leaflet_quickstart")
+#def lq():
+    #return render_template('leaflet_quickstart.html')
+
+@app.route("/scratch")
+def scratch():
+    keys = request.args.keys()
+    args = {}
+    if len(keys) >= 1:
+        for i in keys:
+            args[i] = request.args.get(i)
+    return render_template('scratch.html', args=args)
+
+@app.route("/blank")
+def blank():
+    data = request.args.get('data')
+    return render_template('blank.html', data=data)
 
 def query(address):
     lat, lng = address.lat, address.lng

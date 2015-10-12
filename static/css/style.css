@@ -85,3 +85,20 @@ ol {margin-bottom:3%;}
   text-shadow: 1px 1px red;
   text-align: center;
 }
+
+#main-container{
+  color:white;
+  text-shadow: 1px 1px black;
+}
+
+#form-container {
+  width: 150px;
+}
+
+#form-container .button {
+  margin-left: 80px;
+}
+
+.vid-container {
+  text-align: center;
+}
