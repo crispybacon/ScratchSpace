@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="main-container">
+  <h3>select box</h3>
+  <select>
+    <option value="red">red</option>
+    <option value="blue">blue</option>
+    <option value="green">green</option>
+    <option value="yellow">yellow</option>
+  </select>
+  <hr></hr>
+  <h3>text area</h3>
+  <textarea name="comments" rows="5" cols="50"></textarea>
+  <hr></hr>
+  <h3>text input</h3>
+  <form>
+    username: <input type="text" name="username" value="default">
+    button: <input type="button" name="button" value="button" action="pressed" onclick="alert('button pressed')">
+    submit: <input type="submit">
+  </form>
+  <hr></hr>
+  <h3>radio input</h3>
+  <form>
+    Have you tested the radio buttons?<br />
+    <input type="radio" name="question" value="yes">Yes</br >
+    <input type="radio" name="question" value="no">No</br >
+    <input type="submit">
+  </form>
+  <hr></hr>
+  <h3>check box</h3>
+  <form>
+    Operating System</br >
+    <input type="checkbox" name="OS" value="OSX">OSX</br >
+    <input type="checkbox" name="OS" value="Windows">Windows</br >
+    <input type="checkbox" name="OS" value="Linux">Linux</br >
+    <input type="checkbox" name="OS" value="Unix">Unix</br >
+    <input type="checkbox" name="OS" value="DOS">DOS</br >
+    <input type="submit">
+  </form>
+  <hr></hr>
+  <h3>forms container</h3>
+  <div id="form-container">
+    <form>
+      <label>First Name:</label><input type="text" name="fname">
+      <label>Last Name:</label><input type="text" name="lname">
+      <label>Email:</label><input type="text" name="email">
+      <input type="submit" value="submit">
+    </form>
+  </div>
+  <hr></hr>
+  <h3>video embed</h3>
+  <div class="vid-container">
+    <iframe  id="vid" width="560" height="315" src="https://www.youtube.com/embed/FG0fTKAqZ5g" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <hr></hr>
+  <h3>Google maps embed</h3>
+  <div class="vid-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50435.47971078026!2d-122.53102753236831!3d37.80837460440308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858691b2d4d369%3A0x7637d56862d8e550!2sGolden+Gate%2C+California!5e0!3m2!1sen!2sus!4v1444616895155" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </div>
+  <hr></hr>
+</div>
+{% if args %}
+    <h3 style="color:white;text-shadow:3px 3px blue">Debug</h3>
+  {% for i in args.keys() %}
+    <p style="color:white;text-shadow=1px 1px blue"><b>{{ i }} =  {{ args[i] }}</b></p>
+      {% if i == 'OSX' %}
+        <script>alert('OSX is Very Nice')</script>
+      {% endif %}
+      {% if i == 'Windows' %}
+        <script>alert('Windows Office Applications are Awesome')</script>
+      {% endif %}
+      {% if i == 'Linux' %}
+        <script>alert('Linux is very flexible')</script>
+      {% endif %}
+      {% if i == 'Unix' %}
+        <script>alert('The Unix kernel is smaller than the Linux kernel and so on.')</script>
+      {% endif %}
+      {% if i == 'DOS' %}
+        <script>alert('DOS Boots. Ya.')</script>
+      {% endif %}
+  {% endfor %}
+{% endif %}
+{% endblock %}
+{{ footer }}
