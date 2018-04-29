@@ -1,0 +1,8 @@
+loggers - Logging interface
+
+handlers - Sends the data to the right destination
+
+Filters - decides what data to output
+
+Formatter's - specifies the output layout
+
